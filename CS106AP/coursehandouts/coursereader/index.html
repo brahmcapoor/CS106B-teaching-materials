@@ -1,0 +1,366 @@
+<html>
+  <head>
+    <title> CS 106AP Reader </title>
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous" />
+    <link rel="stylesheet" href="readerstyles.css" />
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="pageHeader">
+            <a href="http://cs106ap.stanford.edu" class="no-print">
+              <p class="subtleHeading text-center">
+                Back to CS 106A Homepage
+              </p>
+            </a>
+            <h1> Variables and Functions </h1>
+            <p class="subtleHeading">
+              Written by Andrew Tierno
+            </p>
+            <p class="subtleHeading">
+              <i class="far fa-calendar-alt"></i> April 15th, 2019
+            </p>
+            <hr />
+          </div>
+        </div>
+      </div>
+      <p>
+        The two most fundamental building blocks in any computer program are
+        variables, which can store information, and functions which can perform
+        actions. 
+      </p>
+      <hr />
+      <div class="readersection">
+          <h2>Variables</h2>
+          <div class="readersubsection" id="defining-and-assigning-variables">
+            <h4>>Defining and Assigning Variables</h4>
+            <p>
+                We use variables to store information about our program.
+                Variables in computer science are similar, but not quite the
+                same as variables you may have encountered in math. Like
+                variables from math, variables in computer science act as
+                placeholders for values with names we assign like <code>x</code>
+                or <code>y</code>. Unlike variables from math, you don't set up
+                equations and "solve for" their values. Instead, we as
+                programmers <em class="keyword">assign</em> values to our variables. In general,
+                we write that
+                <div class="text-center">
+                    <code>variable_name = some value</code>
+                </div><br>
+                If, for instance, we write
+                <div class="text-center">
+                        <code>the_answer = 42</code>
+                </div><br>
+                then we are <em>assigning</em> the value <code>42</code> to the
+                variable called <code>the_answer</code>. The first time that we
+                assign a value to variable, we say that we are <em class="keyword">defining</em>
+                the variable. This distinction is important because <em>we
+                cannot use a variable before we have defined it</em>. For
+                instance,
+                <div class="codeblock">
+                    <pre>
+                        <code class="python">
+>>> the_answer = 42 
+>>> print(the_answer) 42 
+>>> print(an_undefined_variable)
+Traceback (most recent call last): File "&lt;stdin&gt;", line 1, in
+&lt;module&gt; NameError: name 'an_undefined_variable' is not defined
+                        </code>
+                    </pre>
+                </div>
+                Don't worry too much about the scary output; it translates to
+                Python isn't a fan of undefined variables! There are many types
+                of information that can be stored in variables For instance, 
+                <ul>
+                    <li>
+                        <code>int</code> variables store integers. Integers are
+                        numbers without decimal values like <code>-81</code>,
+                        <code>0</code>, or <code>42</code>. You might use an <code>int</code> to represent the number of students in a class. 
+                    </li>
+                    <li>
+                        <code>float</code> variables store numbers with decimal
+                        values. Floats are numbers like <code>-9.876</code>,
+                        <code>2.0</code>, or <code>3.14159</code>. Notice that
+                        <code>2.0</code>, while here considered a float is also
+                        a valid integer value. We shall later discuss the
+                        implications of this, but for now we will work with the
+                        convention that <code>2</code> refers to the integer
+                        value while <code>2.0</code> refers to the float value. A <code>float</code> might be used to represent the average grade of students on a midterm. 
+                    </li>
+                    <li>
+                        <code>bool</code> variables, also known as Boolean variables, are a unique kind of variable that can only take one of two values, <code>True</code> and <code>False</code>. A <code>bool</code> could be used to represent whether or not a class is recorded (i.e. <code>True</code> means the class is recorded and <code>False</code> means it is not).
+                    </li>
+                    <li>
+                        <code>str</code> variables (i.e. strings) store textual
+                        information. We'll be discussing strings in much greater
+                        detail in <a href=".">String Properties and
+                        Functions</a>, but we'll give a brief description of
+                        them here as well. We surround strings using single
+                        quotation marks (<code>'</code>), so for instance, the
+                        sentence, You bet Bit's the best bot!, would be
+                        represented in code as <code>'You bet Bit's the best
+                        bot!'</code>. We can also have what's called an empty
+                        string. This string represents a completely blank line
+                        of text and is written as two single quotes,
+                        <code>''</code>. One simple example of a <code>str</code> variable would be one used to represent the name of a class!
+                    </li>
+                </ul>
+            </p>
+            <div class="attn-box">
+                Determining Variable Type
+                <hr/>
+                If you ever are unsure of what type a particular variable has,
+                you can use the built-in <code>type</code> function to find out.
+                For instance, 
+                <div class="codeblock">
+                    <pre>
+                        <code class="python">
+>>> woah_a_string = 'a cool string' 
+>>> hey_a_float = 4.8 
+>>> lit_an_int = 9
+>>> yeet_a_bool = True
+>>> print(type(woah_a_string)) 
+#Prints: &lt;class 'str'&gt;
+>>> print(type(hey_a_float)) 
+#Prints: &lt;class 'float'&gt; 
+>>> print(type(lit_an_int)) 
+#Prints: &lt;class 'int'&gt;
+>>> print(type(yeet_a_bool)) 
+#Prints: &lt;class 'bool'&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+          </div>
+          <div class="readersubsection" id="operations-on-variables">
+            <h4>>Operations on Variables</h4>
+            <h5>Integers and Floats</h5>
+            <p>
+                There are a handful of predefined operations you can perform on
+                numeric variables (e.g. <code>int</code> and <code>float</code>
+                variables) that do roughly what you'd expect. These are
+                operations like <code>+</code>, <code>-</code>, <code>*</code>,
+                and <code>/</code>. Consider, 
+                <div class="codeblock">
+                    <pre>
+                        <code class="python">
+>>> a = 2.5 
+>>> b = 4.0 
+>>> c = a * b #c is now 10.0
+>>> d = c + a #d is now 12.5 
+>>> print(d) 12.5
+                        </code>
+                    </pre>
+                </div>
+                There is one notable exception, namely the division of an
+                <code>int</code> by another <code>int</code>. Consider,
+                <div class="codeblock">
+                        <pre>
+                            <code class="python">
+>>> x = 5 
+>>> y = 2 
+>>> z = x / y 
+>>> print(z) 
+2.5
+                            </code>
+                        </pre>
+                    </div>
+                So, even though <code>x</code> is an <code>int</code> and
+                <code>y</code> is an <code>int</code>, <code>z</code> is a
+                <code>float</code>! There is another operation, <code>//</code>
+                which refers to <em class="keyword">integer division</em>. You can think of
+                integer divison as regular division where the final result is
+                rounded down to the nearest integer. So, 
+                <div class="codeblock">
+                        <pre>
+                            <code class="python">
+>>> x = 5 
+>>> y = 2 
+>>> w = x // y 
+>>> print(w) 
+2
+                            </code>
+                        </pre>
+                    </div>
+                This type of integer division will become an incredibly useful
+                tool once we get to <a href=".">Image
+                Algorithms</a>. One common gotcha has to do with negative numbers. Consider <code>-5 // 2</code>. You might be tempted to say that the result is <code>-2</code> since <code>5 // 2</code> is <code>2</code>. However, since we always <em>round down</em>, <code>-5 // 2</code> will actually be <code>-3</code>!<br><br>
+                <div class="attn-box">
+                    Updating a Variable
+                    <hr/>
+                    Sometimes we want to <em class="keyword">update</em> the value stored in a variable. That means that we want to change the value it has stored, oftentimes in a way that relies on the value it currently has. For example, imagine that we have the grades of a few students in a class and we want to compute the class average. We could use the following code to do so:
+                    <div class="codeblock">
+                            <pre>
+                                <code class="python">
+>>> score_1 = 75.4
+>>> score_2 = 89.7
+>>> score_3 = 69.8
+>>> avg_score = 0
+>>> avg_score = avg_score + score_1 #avg_score is now 0 + 75.4 = 75.4
+>>> avg_score = avg_score + score_2 #avg_score is now 75.4 + 89.7 = 165.1
+>>> avg_score = avg_score + score_3 #avg_score is now 165.1 + 69.8 = 234.9
+>>> avg_score = avg_score / 3 #avg_score is now 234.9 / 3 = 78.3
+>>> print(avg_score)
+78.3
+                                </code>
+                            </pre>
+                    </div>
+                    This syntax of <code>variable = variable +,-,*,/ value</code> is so prevalent in programming that we have created an easy way to abbreviate it. Namely, <code>variable +,-,*,/= value</code>. The code we wrote above could be rewritten as
+                    <div class="codeblock">
+                            <pre>
+                                <code class="python">
+>>> score_1 = 75.4
+>>> score_2 = 89.7
+>>> score_3 = 69.8
+>>> avg_score = 0
+>>> avg_score += score_1
+>>> avg_score += score_2
+>>> avg_score += score_3
+>>> avg_score /= 3
+>>> print(avg_score)
+78.3
+                                </code>
+                            </pre>
+                    </div>
+                    This syntax is substantially cleaner and saves you the work of typing out some longer and more annoying lines. 
+                </div>
+                <h5>Strings</h5>
+                The main "operation" that we can do with strings is known as string concatenation. String concatentation is the process of taking two strings and "gluing" them together. Concatention is done with the <code>+</code> operator so <code>'hello ' + 'world'</code> would produce the string <code>'hello world'</code>. Notice the space after the o in "hello". Without it, we would concatenate <code>'hello' + 'world'</code> and produce <code>'helloworld'</code>, which may or may not be what we want given the context. As with integers and floats, we can use the <code>+=</code> operator here. For example,
+                <div class="codeblock">
+                        <pre>
+                            <code class="python">
+>>> s1 = '' #The empty string!
+>>> s1 += 'I am'
+>>> s1 += ' excited ' #notice the spaces here
+>>> s1 += 'about CS 106AP!'
+>>> print(s1)
+'I am excited about CS 106AP!'
+
+                            </code>
+                        </pre>
+                </div>
+                <h5>Booleans</h5>
+                Booleans have a unique set of operations called <code>and</code>, <code>or</code>, and <code>not</code>. If <code>a</code> and <code>b</code> are Booleans, <code>a and b</code> is <code>True</code> <em>only</em> if <code>a</code> and <code>b</code> are both individually <code>True</code> otherwise <code>a and b</code> is <code>False</code>. Now, <code>a or b</code> is <code>True</code> if <em>at least one of</em> <code>a</code> and <code>b</code> is <code>True</code> and <code>False</code> otherwise. Finally, we have <code>not a</code>. The operation <code>not</code> "flips" a Boolean so if <code>a</code> is <code>True</code>, <code>not a</code> is <code>False</code> and vice versa.<br><br>
+                What makes Booleans really powerful is they are the language we use to tell if things are equal to, greater than, or less than one another. We've summarized how to do this in the following table.<br><br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Function</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>x == y</code></td>
+                            <td><code>True</code> if <code>x</code> and <code>y</code> are equal, <code>False</code> otherwise.</td>
+                        </tr>
+                        <tr>
+                            <td><code>x < y</code></td>
+                            <td><code>True</code> if <code>x</code> is <em>less than</em> <code>y</code>, <code>False</code> otherwise.</td>
+                        </tr>
+                        <tr>
+                            <td><code>x > y</code></td>
+                            <td><code>True</code> if <code>x</code> is <em>greater than</em> <code>y</code>, <code>False</code> otherwise.</td>
+                        </tr>
+                        <tr>
+                            <td><code>x <= y</code></td>
+                            <td><code>True</code> if <code>x</code> is <em>less than or equal to</em> <code>y</code>, <code>False</code> otherwise.</td>
+                        </tr>
+                        <tr>
+                            <td><code>x >= y</code></td>
+                            <td><code>True</code> if <code>x</code> is <em>greater than or equal to</em> <code>y</code>, <code>False</code> otherwise.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="attn-box">
+                    A Common Mix Up
+                    <hr>
+                    Notice that the way we test if <code>x</code> and <code>y</code> are equal is with <code>==</code> <em>not</em> <code>=</code> like you may be used to from math. This is a very common mistake to make! Always try and keep in mind that when you're <em>assigning</em> a value to a variable to use <code>=</code> and if you're testing <em>equality</em> to use <code>==</code>.
+                </div>
+            </p>
+          </div>
+      </div>
+      <div class="readersection">
+          <div class="readersubsection">
+              <h3>Functions</h3>
+              <h5>>Defining a Function</h5>
+              Now that we have the ability to save information in our program using variables, we can use functions to actually do something with that data. We've already been using a function quite extensively, the <code>print</code> function, which allows us to output information. The most basic template of a function looks as follows
+              <div class="codeblock">
+                  <pre>
+                        <code language="python">
+def do_something_awesome(param1, param2):
+    #the function body! do cool things here
+    return something
+                        </code>
+                  </pre>
+              </div>
+
+              We can understand this template piece by piece. The keyword <code>def</code> (short for "define") simply tells Python that what comes next is going to be the definition of a function. What follows next is the name of the function (in this case we chose <code>do_something_awesome</code>, but in general you should choose a name that describes what the function you're writing actually does). In parentheses are the parameters, which act as inputs into the function. After the colon comes the function body,where you'll write the function will actually execute. At the very end of the function is a <code>return</code> statement, which acts as the output of the function. Both parameters and return statements are optional, and are only included when your function has inputs or outputs respectively. We'll see exactly how this plays out in some examples. 
+              <h5>>A Basic Function</h5>
+              Consider the following function:
+              <div class="codeblock">
+                  <pre>
+                      <code language="python">
+def is_even(x):
+    y = x // 2
+    return 2 * y == x
+                      </code>
+                  </pre>
+              </div>
+              The intent of this function is to return <code>True</code> if the input <code>x</code> is even and <code>False</code> otherwise. We accomplish this by taking advantage of the rounding down feature of integer multiplication. If <code>x</code> is 4, then <code>x // 2</code> will be <code>2</code> and so <code>2 * y</code> will be <code>4</code>. Since <code>4 == 4</code> is <code>True</code>, <code>is_even</code> return (i.e. output) <code>True</code>! If <code>x</code> is 5, then <code>x // 2</code> will be 2, meaning that <code>2 * y</code> will be <code>4</code>. Since <code>4 == 5</code> is <code>False</code>, <code>is_even</code> will return <code>False</code>! Feel free to try out some other values to prove to yourself why this code works.<br><br>
+              The variable <code>x</code> is what we call a <em class="keyword">parameter</em>. When we're writing our method (like <code>is_even</code>), we don't know exactly what values will be inputted as our parameters, so we need to make our function able to handle any reasonable set of possible inputs. We've already walked through the logic of how if <code>x</code> is either an even or an odd number we'll get the right result out. If we want to actually <em>call</em> our function (that is, use it) we could write the following code once it has been defined:
+              <div class="codeblock">
+                <pre>
+                    <code class="python">
+>>> print(is_even(5))
+False
+>>> x = -4
+>>> print(is_even(x)) #Does our program work for negative numbers? Go back and check!
+True
+                    </code>
+                </pre>
+              </div>
+              <h5>>Multiple Parameters</h5>
+              Sometimes we want to write functions that have multiple inputs. For instance, let's say that we want to write a function that calculates the y-value of a point on a line. Recall that for a line with slope <em>m</em> and y-intercept <em>b</em>, <em>y = mx + b</em>. In code, we might express this as
+              <div class="codeblock">
+                <pre>
+                    <code class="python">
+def calculate_y(m, x, b):
+    y = m * x + b
+    return y
+                    </code>
+                </pre>
+              </div>
+              Now, in our console, we might write
+              <div class="codeblock">
+                    <pre>
+                        <code class="python">
+>>> print(calculate_y(1, 2, 3)) #1 * 2 + 3 = 5
+5
+>>> print(calculate_y(3, 2, 1)) #3 * 2 + 1 = 7
+7
+                        </code>
+                    </pre>
+                </div>
+                The <em>order</em> in which inputs are passed into the function must match the <em>order</em> in which they're written in the function definition. In the first function call, <code>m</code> is <code>1</code>, <code>x</code> is <code>2</code>, and <code>b</code> is <code>3</code>. In the second these definitions are reversed, yielding two very different results. 
+          </div>
+      </div>
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/atom-one-dark.min.css"
+    />
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/atelier-forest-light.min.css"
+    disabled />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>
